@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Semana1", "Semana1", "{D723F0BB-9D4B-447E-876C-B520EC8E8C75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TA", "TA", "{EA849B61-99B0-4D8A-B810-A2E7139CA920}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Proyecto.NET", "Proyecto.NET", "{5190D525-5559-49E3-A12A-85201170B2E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello,World.net", "Semana1\TA\Proyecto.NET\Hello,World.net\Hello,World.net.csproj", "{7E124BD0-A2C3-44CB-A41A-E153184499ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E124BD0-A2C3-44CB-A41A-E153184499ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E124BD0-A2C3-44CB-A41A-E153184499ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E124BD0-A2C3-44CB-A41A-E153184499ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E124BD0-A2C3-44CB-A41A-E153184499ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA849B61-99B0-4D8A-B810-A2E7139CA920} = {D723F0BB-9D4B-447E-876C-B520EC8E8C75}
+		{5190D525-5559-49E3-A12A-85201170B2E6} = {EA849B61-99B0-4D8A-B810-A2E7139CA920}
+		{7E124BD0-A2C3-44CB-A41A-E153184499ED} = {5190D525-5559-49E3-A12A-85201170B2E6}
+	EndGlobalSection
+EndGlobal
