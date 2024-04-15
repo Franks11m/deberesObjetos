@@ -1,6 +1,6 @@
 # Explicacion sobre "Hello, World!" en cada framework:
-## Nest,js
-## .net
+## Nest.js
+## .Net
 ## Django
 
 Link por youtube: 
