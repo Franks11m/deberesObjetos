@@ -3,4 +3,4 @@
 ## .Net
 ## Django
 
-Link por youtube: 
+Link por youtube: https://youtu.be/JXhxQVB_AY4
