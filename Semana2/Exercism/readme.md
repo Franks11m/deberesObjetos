@@ -1,37 +1,47 @@
-# Teora explicativa sobre siguientes 2 ejercisios de Exercism
+# Teora explicativa sobre los siguientes 2 ejercisios de Exercism
 
 ## Resistor Color Duo
 
 ### Introduccion 
 
-"En algunos acentos ingleses, cuando dices "two for" rápidamente, suena como "two fer". Dos por uno es una forma de decir que si compras uno, también obtienes uno gratis. Por lo tanto, la frase "two-fer" a menudo implica una oferta de dos por uno.
-Imagina una panadería que tiene una oferta navideña en la que puedes comprar dos galletas por el precio de una ("¡dos por una!"). Aceptas la oferta y (muy generosamente) decides darle la galleta extra a otra persona en la cola."
+"Este ejercisio es la continuidad del anterior del cual trataba; identificar el valor de un color de una resistencia; ahora me pide un programa que ayude a encontrar dos valores numericos segun los colores que se encuentre en una resistencia; basandonos en la tabla de colores de la resistencia"
 
 #### Instrucciones por mi punto de vista 
 
-Para desarrollar el ejercisio se debe tener claro cual es la idea principal; como en este caso es declarar un string juntando dos oraciones pero estas oraciones son deribadas a una oferta de "2x1" ejemplo: si compras 1 producto random  llevas el otro gratis; diciendo lo siguiente, One for you, One for me. lo que quiere decir Uno para ti, otro para mi. podemos remplazarlo con un cualquier nombre  
-One for Zhatan, One for me.
-
-ahora dentro de programacion tenemos que declarar cualquier nombre dciendo la frese 
-
-One for you, One for me.
+Para resolver este ejerciso tenemos que crear un codigo que use todos los colores de tabla y codifique cada uno por su valor; por lo tanto si tengo marrón-verde debería devolver 15 marrón-verde-violeta también debería devolver 15, ignorando el tercer color.
 
 ### Resultados
 
-#### export function twoFer(name: string): string 
+#### export function decodedValue(input: string[]): number 
 
-Aqui nosotros declaramos la funcion "dospor" dentro hay un objeto el cual es nombre que es un string  y este da otro sting.
+ Aquí estamos definiendo una función llamada decodedValue que toma un array de strings como entrada y devuelve un número.
 
-#### const firstMessage : string = `One for ${name || 'you'}`
-#### const secondMessage : string = ', one for me.'
+#### const colors = [ ... ];
 
-Aqui declaramos con una variable const dos mensajes; el 1er sera lo que estara en el string ya mencionado en la anterior linea de codigo, diciendo ${name || 'you'}` que sigifica qé entre name y you hay un operador que los separa el cal es el OR donde segun regalmentariamnete cualquiera de los dos si es verdadero salen verdadero si es NAME o YOU cualquiera; y de la misma manera para e segundo con le string llamamos  ', one for me.'
+ Creamos un array llamado colors que contiene los nombres de los colores codificados según las especificaciones dadas en el ejercicio.
+ 
+#### let decodedNumber = 0;
+ 
+ Inicializamos una variable decodedNumber que utilizaremos para almacenar el número decodificado.
 
-#### return firstMessage + secondMessage
+ #### for (let i = 0; i < 2 && i < input.length; i++) 
 
-finalmente; devolvemos el mensaje sumando los 2 Messages donde albitrariamente nos repondera.
+Comenzamos un bucle for que se ejecutará dos veces o hasta que se agoten los elementos en la entrada, lo que ocurra primero. Esto asegura que solo consideraremos las primeras dos bandas de color.
 
-One for you, One for me.
+#### const colorIndex = colors.indexOf(input[i])
+
+Para cada color en la entrada, obtenemos su índice en el array colors. Esto nos dará el valor numérico asociado con ese color según la codificación dada.
+
+#### if (colorIndex !== -1) 
+
+Verificamos si el color está presente en la lista colors. Si colorIndex no es igual a -1, significa que el color existe en la lista y podemos continuar con el proceso de decodificación.
+
+#### decodedNumber = decodedNumber * 10 + colorIndex
+Aquí actualizamos el número decodificado multiplicándolo por 10 y luego sumando el índice del color. Esto asegura que los números se concatenen correctamente para formar el número de dos dígitos.
+
+#### return decodedNumber
+Devolvemos el número decodificado después de procesar las primeras dos bandas de colores en la entrada.
+
 
 ## Resistor Color Trio
 
@@ -44,29 +54,36 @@ Las primeras 2 bandas de una resistencia tienen un esquema de codificación simp
 En este ejercicio vas a crear un programa útil para que no tengas que recordar los valores de las bandas.
 
 #### Instrucciones por mi punto de vista 
-En este ejercisio nos da como introduccion la codificacion que emite una resistencia mediante suu colores lo cual no voy programar cuanro es que vale la resisitencia en si, si no que voy a establecer un orden coóquial de cada color de las resistencias en general proponiendo crear un programa útil para que no tenga que recordar los valores de las bandas.
+
+En el siguiente ejercsio se realizara una codificacion de encontrar los 2 primeros colores; siendo En Resistor Color Duo decodificaste los dos primeros colores. Por ejemplo: naranja-naranja obtuvo el valor principal 33. El tercer color representa cuántos ceros se deben agregar al valor principal. El valor principal más los ceros nos da un valor en ohmios. Para el ejercicio no importa qué son realmente los ohmios. Por ejemplo: 
+naranja-naranja-negro sería 33 y sin ceros, lo que se convierte en 33 ohmios.
+
+naranja-naranja-rojo serían 33 y 2 ceros, lo que se convierte en 3300 ohmios.
+
+naranja-naranja-naranja serían 33 y 3 ceros, lo que se convierte en 33000 ohmios.
 
 ### Resultados
+#### export function decodedResistorValue(colors: string[]) 
+ Esta línea define una función llamada decodedResistorValue que acepta un array de strings llamado colors. El export indica que esta función puede ser importada y utilizada desde otros archivos.
 
-#### export const COLORS = [ "black", "brown","red","orange","yellow","green","blue","violet","grey","white"];
+#### const colorValues 
+ Aquí se define un array llamado colorValues que contiene los colores válidos para las bandas de una resistencia según la codificación dada en las instrucciones.
+#### if (colors.length !== 3 || colors.some(color => !colorValues.includes(color))) { return "Colores de resistencia inválidos"; }: 
+ Esta línea verifica si el array colors contiene exactamente tres elementos y si todos los elementos son colores válidos según colorValues. Si no se cumple esta condición, la función devuelve un mensaje de error indicando que los colores de resistencia son inválidos.
+#### const mainValue = colorValues.indexOf(colors[0]) * 10 + colorValues.indexOf(colors[1]);: 
+ Aquí se calcula el valor principal de la resistencia multiplicando el índice del primer color en colors por 10 y sumando el índice del segundo color en colors.
+#### const zeros = colorValues.indexOf(colors[2]);: 
+ Esta línea calcula cuántos ceros se deben agregar al valor principal de la resistencia, tomando el índice del tercer color en colors.
+#### let finalValue = mainValue;: 
+ Se inicializa la variable finalValue con el valor principal calculado anteriormente.
+#### let unit = "ohmios";:
+ Se inicializa la variable unit con el valor predeterminado "ohmios", que representa la unidad de la resistencia.
+#### if (zeros >= 3 && zeros < 6) { ... } else if (zeros >= 6 && zeros < 9) { ... } else if (zeros >= 9) { ... }: 
+ Estas líneas verifican cuántos ceros se deben agregar al valor principal y ajustan finalValue y unit en consecuencia para representar el valor final de la resistencia en la unidad adecuada ("ohmios", "kiloohmios", "megaohmios" o "gigaohmios").
+#### return ${finalValue} ${unit};: 
+ Finalmente, se devuelve una cadena que representa el valor de la resistencia seguido de la unidad correspondiente, por ejemplo, "33 ohmios", "3300 ohmios", "33 kiloohmios", etc.
 
-Aqui inicialmente exporto ua const llamada COLORS en dondeexiste un conuunto de Array, el cual son los coloores que tiene cada banda de  las resistencias; los coloque de manera ordenada.
-
-#### export const colorCode = (color:string) => 
-
-Aqui exporto una constante coloCode con el objeto color igual a un string; dondepuedo argumentar que esta constante trabajara en buscar dentro del Array el color como esta en tipo string
-
-#### return COLORS.indexOf(color) 
-
-Finalmnete, devolvemos toda la cadena de codificacion primero con la constante del Array el cual es COLORS con un INDEX DE porque (color) y asi devulve  el color solicitado ejemplo:
-
-describe('color code', () => {
-  it('Black', () => {
-    expect(colorCode('black')).toEqual(0)
-  }) 
-
-  black es inicialmente 1 para nosotros como programadores es el 0 que seria la respuesta.
 
 # Link por youtube para una explicacion mas detallada:
 
-Link por youtube:  https://youtu.be/6qjZQ9a9KoI
+Link por youtube:  https://youtu.be/uy5UZQvELTQ
